@@ -1,0 +1,107 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "assetClosure": 13,
+    "assetHashesVerified": 7,
+    "mouthTransitionPairs": 49,
+    "leftBlink": true,
+    "rightBlink": true,
+    "brows": true,
+    "gaze": true,
+    "body": {
+      "head": true,
+      "jaw": true,
+      "cheeks": true,
+      "hairRegions": 0,
+      "clothing": true
+    },
+    "sourceCopiedByteIdentical": true,
+    "localizedEditsOutsideMaskUnchanged": true,
+    "sourceWidth": 1024,
+    "sourceHeight": 1536,
+    "registration": [
+      {
+        "sheet": "mouth",
+        "cell": 6,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "mouth",
+        "cell": 0,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "mouth",
+        "cell": 1,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "mouth",
+        "cell": 2,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "mouth",
+        "cell": 3,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "mouth",
+        "cell": 4,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "mouth",
+        "cell": 5,
+        "method": "reference-rectangle",
+        "rmsPixels": null
+      },
+      {
+        "sheet": "blink",
+        "cell": 0,
+        "method": "stable-template-ncc",
+        "rmsPixels": 8.46112905412849e-13,
+        "correlation": 0.9564734134222779
+      },
+      {
+        "sheet": "blink",
+        "cell": 1,
+        "method": "stable-template-ncc",
+        "rmsPixels": 1.4611633712350969e-12,
+        "correlation": 0.9652104803028781
+      },
+      {
+        "sheet": "blink",
+        "cell": 2,
+        "method": "stable-template-ncc",
+        "rmsPixels": 3.83661496333627e-12,
+        "correlation": 0.9555176447352888
+      },
+      {
+        "sheet": "blink",
+        "cell": 3,
+        "method": "stable-template-ncc",
+        "rmsPixels": 3.3227883581447447e-12,
+        "correlation": 0.9511848823845028
+      },
+      {
+        "sheet": "gaze",
+        "cell": 0,
+        "method": "stable-template-ncc",
+        "rmsPixels": 1.334912959216283e-12,
+        "correlation": 0.974454576304922
+      }
+    ],
+    "isolatedPatches": 19,
+    "protectedPixels": 39661,
+    "geometryTransitions": 68
+  }
+}

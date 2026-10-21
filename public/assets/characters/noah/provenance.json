@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "sourceSha256": "0e3591ccb42de9707d22bc8fdb7bc7cd8bf0e35fd142c1c43b6917402c51a540",
+  "sourceAssets": {
+    "0e3591ccb42de9707d22bc8fdb7bc7cd8bf0e35fd142c1c43b6917402c51a540": "0e3591ccb42de9707d22bc8fdb7bc7cd8bf0e35fd142c1c43b6917402c51a540",
+    "422614c051f7bb91eae3ffab3c8f278c1a4c92539bc8c1c7e0234cb5f9133650": "422614c051f7bb91eae3ffab3c8f278c1a4c92539bc8c1c7e0234cb5f9133650",
+    "35570bf28bf815a9bad50938313d8f60fd6ed6c50794eff4a73162745839bb88": "35570bf28bf815a9bad50938313d8f60fd6ed6c50794eff4a73162745839bb88",
+    "9a1edbee4ae50e3ece0b2f55a2b4ec839a09b72acf327ff1745e076eb584e5ab": "9a1edbee4ae50e3ece0b2f55a2b4ec839a09b72acf327ff1745e076eb584e5ab",
+    "1d5daafe4796aa50da6a9e51df865f2cd09cba22827b56154aec4af231c37eb0": "1d5daafe4796aa50da6a9e51df865f2cd09cba22827b56154aec4af231c37eb0"
+  },
+  "files": {
+    "portrait.png": "0e3591ccb42de9707d22bc8fdb7bc7cd8bf0e35fd142c1c43b6917402c51a540",
+    "repair.png": "cddc334c05a23c8544f34a9fd4f94fea66a6b87a61d4bc2c26218cdd5413273d",
+    "mouth.png": "f0509f476292c3fcae35172bc15765e65d0bf49467b63b2fdd710f098522c6ab",
+    "blink.png": "4a262a8f8a8107dd869ae466db253a0f7c4e62e12f9c8a014b8447bc88b7ae07",
+    "brows.png": "3453098c57d5e5eda670eef0faa30f8c60e7d06d138cdbe7294ba0dcd54ea828",
+    "gaze.png": "7035407b3ebf530c5fb0997ab10cf9e848da53b8fe10c4e9992d12adb7334a6f",
+    "review.png": "a5145b154d871c762214636f664896fc88c9e92b2c1ce1e42227dc74de840ebc"
+  },
+  "recipeSha256": "5eee503897a2dda947ef656ef7f552a6c9c128f5a0653b222a3b97101089ef1d",
+  "artwork": {
+    "name": "Noah original approved design",
+    "creator": "Mario Manzocco with OpenAI built-in image generation",
+    "license": "MIT; original example artwork, see art/characters/noah/provenance.json"
+  },
+  "pixelPolicy": "Immutable source; deterministic registration, local color matching, masking and atlas packing of supplied edits only."
+}

@@ -1,0 +1,121 @@
+{
+  "sourceWidth": 1024,
+  "sourceHeight": 1536,
+  "image": "/assets/characters/mira/gaze.png",
+  "eyes": [
+    {
+      "rect": {
+        "x": 394,
+        "y": 235,
+        "width": 88,
+        "height": 60
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 88,
+        "height": 60
+      },
+      "iris": {
+        "x": 442,
+        "y": 265,
+        "radiusX": 14.8,
+        "radiusY": 19.5,
+        "feather": 0.75
+      },
+      "maxShiftX": 2,
+      "maxShiftY": 1.5,
+      "originalAperture": [
+        [
+          411,
+          263
+        ],
+        [
+          420,
+          254
+        ],
+        [
+          439,
+          250
+        ],
+        [
+          455,
+          253
+        ],
+        [
+          467,
+          262
+        ],
+        [
+          455,
+          276
+        ],
+        [
+          440,
+          280
+        ],
+        [
+          420,
+          276
+        ]
+      ]
+    },
+    {
+      "rect": {
+        "x": 514,
+        "y": 200,
+        "width": 94,
+        "height": 74
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 60,
+        "width": 94,
+        "height": 74
+      },
+      "iris": {
+        "x": 553.5,
+        "y": 240.5,
+        "radiusX": 14.4,
+        "radiusY": 19.2,
+        "feather": 0.75
+      },
+      "maxShiftX": 2,
+      "maxShiftY": 1.5,
+      "originalAperture": [
+        [
+          532,
+          244
+        ],
+        [
+          540,
+          234
+        ],
+        [
+          553,
+          227
+        ],
+        [
+          568,
+          223
+        ],
+        [
+          581,
+          228
+        ],
+        [
+          578,
+          246
+        ],
+        [
+          558,
+          256
+        ],
+        [
+          540,
+          252
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "sourceWidth": 1024,
+  "sourceHeight": 1536,
+  "referenceImage": "/assets/characters/noah/portrait.png",
+  "gaze": "/assets/characters/noah/gaze.json",
+  "lines": "/assets/characters/noah/performance.json",
+  "breathing": {
+    "fixedTop": 297.3333333333333,
+    "vertical": 0.0013333333333333333,
+    "horizontal": 0.001
+  },
+  "head": {
+    "pivot": [
+      520,
+      284.66666666666663
+    ],
+    "rigidUntil": 246,
+    "anchoredFrom": 356.66666666666663
+  },
+  "hair": [],
+  "clothing": {
+    "left": [
+      80,
+      340
+    ],
+    "right": [
+      680,
+      940
+    ],
+    "y": [
+      287.3333333333333,
+      337.3333333333333,
+      990,
+      1024
+    ]
+  },
+  "jaw": {
+    "center": 525.5,
+    "top": 196.33333333333331,
+    "full": 221.45,
+    "chin": 242,
+    "neck": 287.3333333333333,
+    "width": [
+      47.4,
+      106.65
+    ],
+    "drop": 7,
+    "taper": 0.55
+  },
+  "cheeks": {
+    "center": [
+      525.5,
+      194.33333333333331
+    ],
+    "radius": [
+      75.05,
+      9.046666666666667,
+      47.666666666666686
+    ],
+    "lips": [
+      51.35,
+      5
+    ],
+    "stretch": 0.055,
+    "push": 0.045
+  }
+}

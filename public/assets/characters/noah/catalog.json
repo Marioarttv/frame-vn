@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "id": "frame-noah",
+  "name": "Noah — original example",
+  "localOnly": false,
+  "characters": [
+    {
+      "id": "noah",
+      "name": "Noah",
+      "color": "#bd7659",
+      "description": "An original contemporary example character for Frame.",
+      "poses": [
+        {
+          "id": "noah_neutral",
+          "name": "Everyday",
+          "src": "/assets/characters/noah/portrait.png",
+          "rig": "/assets/characters/noah/rig.json",
+          "capabilities": {
+            "mouth": true,
+            "blink": true,
+            "body": true,
+            "gaze": true,
+            "brows": true
+          },
+          "animation": {
+            "poseKey": "noah_neutral",
+            "assetRoot": "/assets/characters/noah",
+            "manifestUrl": "/assets/characters/noah/manifest.json",
+            "speechIndexUrl": "/assets/characters/noah/speech.json",
+            "browsIndexUrl": "/assets/characters/noah/brows-index.json"
+          }
+        }
+      ]
+    }
+  ],
+  "authoring": {
+    "schemaVersion": 1,
+    "calibrationStatus": "reviewed",
+    "sourceSha256": "0e3591ccb42de9707d22bc8fdb7bc7cd8bf0e35fd142c1c43b6917402c51a540",
+    "provenance": {
+      "name": "Noah original approved design",
+      "creator": "Mario Manzocco with OpenAI built-in image generation",
+      "license": "MIT; original example artwork, see art/characters/noah/provenance.json"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "character": "noah",
+  "artLicense": "MIT, to the extent rights are held; AI-generated artwork may not be copyrightable in every jurisdiction.",
+  "creator": "Mario Manzocco with OpenAI built-in image generation",
+  "designApproval": {
+    "date": "2026-10-21",
+    "status": "User explicitly approved revision 2 for rigging."
+  },
+  "source": {
+    "file": "source/portrait.png",
+    "sha256": "0e3591ccb42de9707d22bc8fdb7bc7cd8bf0e35fd142c1c43b6917402c51a540",
+    "dimensions": [
+      1024,
+      1536
+    ]
+  },
+  "generationMethod": "Original design generated from a written specification, then simplified using only that independently generated draft as an image reference. No third-party character image was provided as a generation reference.",
+  "edits": [
+    {
+      "asset": "mouth",
+      "file": "edits/mouth-v1.png",
+      "prompt": "Create a precise facial animation source sheet for an ORIGINAL visual-novel character. The input image is the approved face crop and is the only identity/style reference. Keep its exact face shape, head tilt, camera, lighting, nose, skin colours, hair, and every non-target feature. It uses simple clean anime linework and hard cel shadows; do not add detail or painterly rendering. Every grid cell must show the SAME COMPLETE input face crop with IDENTICAL scale, framing, and placement; change ONLY the specified feature. Each cell fills its rectangle edge to edge with no gutters, margins, borders, printed labels, numbers, diagrams, watermarks, or extra art. Keep all cells equal in size so a deterministic packer can extract their features. Preserve transparent areas from the input. Output a 4-column by 2-row grid, eight cells, on a 2048x1024 image. Reading left-to-right, top row: 1 A, lips sealed for M/B/P; 2 B, slight horizontal opening with a thin strip of upper teeth; 3 C, medium relaxed open mouth for EH/AE with a dark cavity and modest teeth; 4 D, a wider and taller open AH mouth, dark cavity, upper teeth, subtle tongue. Bottom row: 5 E, rounded open OH mouth; 6 F, small pursed OO mouth; 7 REPAIR, completely remove the entire mouth and all lip lines, mouth corners, lip highlights and lower-lip shadows, healing that local area into perfectly continuous matching unmarked facial skin; 8 X, the unchanged approved resting mouth. Mouth expressions remain relaxed and subtle, never exaggerated or screaming. IMPORTANT: all mouths stay centered at the original resting mouth position; preserve its small diagonal angle if present. Nothing outside the lip/chin region changes. In the REPAIR cell the face is still complete with its original eyes and nose; only the mouth is absent. No letters or text in the actual image.",
+      "reference": "source/face-reference.png",
+      "sha256": "98b5f996079112794f0d664f67d44b51206fb9db50db6ab696d1d1b63572f539",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "tool": "built-in image_gen",
+      "calls": 1
+    },
+    {
+      "asset": "blink",
+      "file": "edits/blink-v1.png",
+      "prompt": "Create a precise facial animation source sheet for an ORIGINAL visual-novel character. The input image is the approved face crop and is the only identity/style reference. Keep its exact face shape, head tilt, camera, lighting, nose, skin colours, hair, and every non-target feature. It uses simple clean anime linework and hard cel shadows; do not add detail or painterly rendering. Every grid cell must show the SAME COMPLETE input face crop with IDENTICAL scale, framing, and placement; change ONLY the specified feature. Each cell fills its rectangle edge to edge with no gutters, margins, borders, printed labels, numbers, diagrams, watermarks, or extra art. Keep all cells equal in size so a deterministic packer can extract their features. Preserve transparent areas from the input. Output a 2-column by 2-row grid, four cells, on a 1536x1536 image. Change ONLY both upper eyelids and the skin immediately required to close them; keep each original lower eyelid and both eye corners fixed. Top-left: eyes 25 percent closed (75 percent open). Top-right: eyes 50 percent closed. Bottom-left: eyes 75 percent closed (a narrow aperture remains). Bottom-right: eyes fully closed naturally, with each upper lash line meeting its own original lower-lid line. Preserve the exact face perspective and each eye's different original vertical position; do NOT level the eyes. Upper eyelids descend smoothly toward the original lower lids, not toward the eye centers. Keep the eyebrows, mouth, bangs, ears and nose absolutely unchanged in every cell. Eyelid skin must match the original skin, with only a restrained lash line, no dark flat blocks or giant eye creases. The 100-percent closed state has no remaining white, iris or pupil. No open-eye duplicate, no face-expression change, no text.",
+      "reference": "source/face-reference.png",
+      "sha256": "35570bf28bf815a9bad50938313d8f60fd6ed6c50794eff4a73162745839bb88",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "built-in image_gen",
+      "calls": 1
+    },
+    {
+      "asset": "brows",
+      "file": "edits/brows-v1.png",
+      "prompt": "Create a precise facial animation source sheet for an ORIGINAL visual-novel character. The input image is the approved face crop and is the only identity/style reference. Keep its exact face shape, head tilt, camera, lighting, nose, skin colours, hair, and every non-target feature. It uses simple clean anime linework and hard cel shadows; do not add detail or painterly rendering. Every grid cell must show the SAME COMPLETE input face crop with IDENTICAL scale, framing, and placement; change ONLY the specified feature. Each cell fills its rectangle edge to edge with no gutters, margins, borders, printed labels, numbers, diagrams, watermarks, or extra art. Keep all cells equal in size so a deterministic packer can extract their features. Preserve transparent areas from the input. Output a 2-column by 1-row grid, two cells, on a 1536x768 image. Change ONLY the eyebrows and the small immediate skin area needed by the eyebrows. Left cell: gently lowered/furrowed eyebrows, approximately 6 percent of one eye's width down at the inner ends, with natural restrained angular shape. Right cell: gently raised eyebrows, approximately 8 percent of one eye's width up. Preserve the original brow thickness and colour. Keep eyes and their apertures, mouth, nose and hair absolutely identical. Hair overlapping a brow stays in front and is unchanged. Do not raise or lower the whole eyes or redraw a new face. No labels or text.",
+      "reference": "source/face-reference.png",
+      "sha256": "9a1edbee4ae50e3ece0b2f55a2b4ec839a09b72acf327ff1745e076eb584e5ab",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "tool": "built-in image_gen",
+      "calls": 1
+    },
+    {
+      "asset": "gaze",
+      "file": "edits/gaze-v1.png",
+      "prompt": "Create a precise facial animation source sheet for an ORIGINAL visual-novel character. The input image is the approved face crop and is the only identity/style reference. Keep its exact face shape, head tilt, camera, lighting, nose, skin colours, hair, and every non-target feature. It uses simple clean anime linework and hard cel shadows; do not add detail or painterly rendering. Every grid cell must show the SAME COMPLETE input face crop with IDENTICAL scale, framing, and placement; change ONLY the specified feature. Each cell fills its rectangle edge to edge with no gutters, margins, borders, printed labels, numbers, diagrams, watermarks, or extra art. Keep all cells equal in size so a deterministic packer can extract their features. Preserve transparent areas from the input. Output a SINGLE face image, 1024x1024, with the exact same crop and framing as the input. Change ONLY the interior of the two eyes: remove irises, pupils and iris highlights, replacing their entire original coverage with clean white sclera, including behind the removed iris edges. Keep the eyelid contours, all lashes, both eye corners, brows, nose, mouth, skin, hair and lighting identical. Do not widen or narrow either eye. This is the clean sclera repair plate behind the ORIGINAL irises; do not draw new pupils or irises or erase eyelash outlines. No grid, no labels or text.",
+      "reference": "source/face-reference.png",
+      "sha256": "1d5daafe4796aa50da6a9e51df865f2cd09cba22827b56154aec4af231c37eb0",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "built-in image_gen",
+      "calls": 1
+    },
+    {
+      "asset": "mouth-v2",
+      "file": "edits/mouth-v2.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: mouth articulation source atlas. Reference image 1 is an EXACT tight lower-face crop from an approved original anime character, showing only the nose, cheeks and resting mouth. Do not extend this crop to show eyes, hair or the whole head.\nCreate a precise 3 by 3 grid of NINE EQUAL SQUARE CELLS on a square 1536x1536 canvas. Each cell must reproduce the ENTIRE reference square, at EXACTLY the same scale and placement; NO zoom, NO pan, NO head movement, NO crop variation. The small nose and surrounding unedited cheek skin must stay absolutely IDENTICAL in every cell. Think of stamping the identical reference crop into every equal cell and editing only the mouth. There must be no gaps, borders, text or labels. Each cell is exactly one ninth of the image; never crop the last column.\nOrder left-to-right then top-to-bottom:\nRow 1: lips sealed for M/B/P; a slight horizontal mouth opening with a thin strip of upper teeth; medium open relaxed EH/AE with upper teeth and a dark cavity.\nRow 2: taller open AH mouth with dark cavity, upper teeth and subtle tongue; rounded open OH; small pursed OO.\nRow 3: remove the ENTIRE mouth, lip corners, lip highlights and lower-lip shadow and heal ONLY that area into perfectly matching blank skin; the exact unchanged original resting mouth; duplicate of the exact unchanged original resting mouth.\nAll six articulated mouth shapes must remain in the SAME anatomical mouth location with a consistent corner-to-corner axis, preserving the original gentle diagonal smile angle. Wide shapes stay within the original resting mouth width; rounded shapes narrow around that same center. Mouth opening extends mostly downward. Expressions stay subtle rather than screaming. Do not slide a mouth sideways or down the face between cells.\nUse the reference's SIMPLE anime linework and hard cel shading, flat colours; no painted textures, glossy extra lip detail, blush, gradients, realistic skin, new face markings or captions. No irises or eyes need to be invented because the reference is a lower-face crop. Keep all skin, nose and any visible contour pixels outside the mouth unchanged. This is a new targeted mouth-sheet replacement; it is not permission to redesign the character.",
+      "reference": "source/mouth-reference.png",
+      "sha256": "f91125131b52bfa6ef777c35fc02d46b4d18842b9fb80687833ee0afae55a77e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "tool": "built-in image_gen",
+      "calls": 1
+    }
+  ],
+  "technicalReview": {
+    "date": "2026-10-21",
+    "reviewer": "Codex",
+    "scope": "Native and 2x rendered mouth states, partial and full blinks, exact rest restoration, source-pixel brows; final browser/offline checks documented in docs/release-plan.md. Design approval is recorded separately.",
+    "notes": "One everyday pose. Supplied edit sheets include unused candidates. Brows use approved source pixels; the hidden brow stays fixed. No voice recording or separate hair layers."
+  }
+}

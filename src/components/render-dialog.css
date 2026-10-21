@@ -1,0 +1,212 @@
+/* Video export dialog. Shares the studio's modal shell; everything below is scoped to .render-dialog. */
+.render-dialog {
+  width: 560px;
+}
+.render-dialog .render-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid #e2e8d7;
+  border-radius: 10px;
+  background: #f4f8ec;
+  font-size: 11px;
+  color: #5f7050;
+}
+.render-dialog .render-summary strong {
+  color: #3b5129;
+  font-weight: 600;
+}
+.render-dialog .render-summary .render-stop {
+  flex-basis: 100%;
+  color: #8d9d7e;
+  font-size: 10px;
+  line-height: 1.6;
+}
+.render-dialog .render-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 15px;
+}
+.render-dialog .render-grid .form-field {
+  margin-top: 0;
+}
+.render-dialog .render-choices {
+  margin-top: 15px;
+  display: grid;
+  gap: 10px;
+}
+.render-dialog .render-choices-title {
+  font-size: 10px;
+  font-weight: 550;
+  color: #7d896e;
+}
+.render-dialog .render-choice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 10px;
+  align-items: center;
+  font-size: 11px;
+}
+.render-dialog .render-choice > span {
+  color: #606d52;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.render-dialog .render-choice > span small {
+  display: block;
+  color: #a4ae97;
+  font-size: 9px;
+}
+.render-dialog .render-choice select {
+  width: 100%;
+  min-height: 34px;
+  font-size: 11px;
+  color: #606d52;
+}
+.render-dialog .render-empty-choices {
+  font-size: 10px;
+  color: #a0ab94;
+}
+.render-dialog .render-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 11px;
+  color: #606d52;
+  cursor: pointer;
+}
+.render-dialog .render-check input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #7fa24d;
+}
+.render-dialog .render-progress {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #e2e8d7;
+  border-radius: 12px;
+  background: #fff;
+}
+.render-dialog .render-progress-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 11px;
+  color: #5f7050;
+}
+.render-dialog .render-progress-head strong {
+  color: #3b5129;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.render-dialog .render-bar {
+  position: relative;
+  height: 8px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: #e9efdf;
+  overflow: hidden;
+}
+.render-dialog .render-bar > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #a9cd72, #7fa24d);
+  transition: width 0.4s ease;
+}
+.render-dialog .render-bar.is-indeterminate > span {
+  width: 30% !important;
+  animation: render-bar-slide 1.4s ease-in-out infinite;
+}
+@keyframes render-bar-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+.render-dialog .render-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #8d9d7e;
+}
+.render-dialog .render-meta b {
+  font-weight: 550;
+  color: #5f7050;
+}
+.render-dialog .render-video {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 10px;
+  background: #101511;
+  aspect-ratio: 16 / 9;
+}
+.render-dialog .render-warnings {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fbf6e6;
+  color: #8a7336;
+  font-size: 10px;
+  line-height: 1.6;
+  max-height: 110px;
+  overflow-y: auto;
+}
+.render-dialog .render-warnings li {
+  margin-left: 14px;
+}
+.render-dialog .render-error {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fbf1ee;
+  color: #a34f3d;
+  font-size: 11px;
+  line-height: 1.6;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.render-dialog .render-error svg {
+  flex: none;
+  margin-top: 1px;
+}
+.render-dialog .modal-footer {
+  align-items: center;
+}
+.render-dialog .modal-footer .render-footnote {
+  margin-right: auto;
+  font-size: 9px;
+  color: #a9b69b;
+  line-height: 1.5;
+}
+.render-dialog .spin {
+  animation: render-spin 1s linear infinite;
+}
+@keyframes render-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 640px) {
+  .render-dialog .render-grid {
+    grid-template-columns: 1fr;
+  }
+  .render-dialog .render-choice {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "sourceWidth": 1024,
+  "sourceHeight": 1536,
+  "image": "/assets/characters/noah/gaze.png",
+  "eyes": [
+    {
+      "rect": {
+        "x": 426,
+        "y": 194,
+        "width": 86,
+        "height": 42
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 0,
+        "width": 86,
+        "height": 42
+      },
+      "iris": {
+        "x": 467,
+        "y": 215.5,
+        "radiusX": 10.2,
+        "radiusY": 12.8,
+        "feather": 0.75
+      },
+      "maxShiftX": 1.5,
+      "maxShiftY": 1,
+      "originalAperture": [
+        [
+          445,
+          218
+        ],
+        [
+          453,
+          213
+        ],
+        [
+          466,
+          209
+        ],
+        [
+          480,
+          209
+        ],
+        [
+          490,
+          214
+        ],
+        [
+          482,
+          222
+        ],
+        [
+          466,
+          225
+        ],
+        [
+          452,
+          224
+        ]
+      ]
+    },
+    {
+      "rect": {
+        "x": 529,
+        "y": 184,
+        "width": 83,
+        "height": 41
+      },
+      "sourceRect": {
+        "x": 0,
+        "y": 42,
+        "width": 83,
+        "height": 41
+      },
+      "iris": {
+        "x": 570,
+        "y": 207,
+        "radiusX": 10.2,
+        "radiusY": 12.7,
+        "feather": 0.75
+      },
+      "maxShiftX": 1.5,
+      "maxShiftY": 1,
+      "originalAperture": [
+        [
+          545,
+          207
+        ],
+        [
+          554,
+          201
+        ],
+        [
+          570,
+          197
+        ],
+        [
+          584,
+          198
+        ],
+        [
+          594,
+          203
+        ],
+        [
+          584,
+          212
+        ],
+        [
+          570,
+          215
+        ],
+        [
+          554,
+          214
+        ]
+      ]
+    }
+  ]
+}

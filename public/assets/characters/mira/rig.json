@@ -1,0 +1,67 @@
+{
+  "sourceWidth": 1024,
+  "sourceHeight": 1536,
+  "referenceImage": "/assets/characters/mira/portrait.png",
+  "gaze": "/assets/characters/mira/gaze.json",
+  "lines": "/assets/characters/mira/performance.json",
+  "breathing": {
+    "fixedTop": 315.3333333333333,
+    "vertical": 0.0013333333333333333,
+    "horizontal": 0.001
+  },
+  "head": {
+    "pivot": [
+      506,
+      299.3333333333333
+    ],
+    "rigidUntil": 266.66666666666663,
+    "anchoredFrom": 370
+  },
+  "hair": [],
+  "clothing": {
+    "left": [
+      80,
+      340
+    ],
+    "right": [
+      680,
+      940
+    ],
+    "y": [
+      305.3333333333333,
+      355.3333333333333,
+      990,
+      1024
+    ]
+  },
+  "jaw": {
+    "center": 516,
+    "top": 230.66666666666666,
+    "full": 249.36666666666665,
+    "chin": 264.66666666666663,
+    "neck": 305.3333333333333,
+    "width": [
+      35.99999999999999,
+      81
+    ],
+    "drop": 7,
+    "taper": 0.55
+  },
+  "cheeks": {
+    "center": [
+      516,
+      224.66666666666666
+    ],
+    "radius": [
+      56.99999999999999,
+      9.966666666666667,
+      39.99999999999997
+    ],
+    "lips": [
+      39,
+      7.5
+    ],
+    "stretch": 0.055,
+    "push": 0.045
+  }
+}

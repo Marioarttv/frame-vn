@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  />
+  <title>Chapter player</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #131923;
+      color: #f5f0e7;
+      font: 15px system-ui;
+    }
+    main {
+      max-width: 1360px;
+      margin: auto;
+      padding: 22px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    h1 {
+      font: 500 24px Georgia;
+      margin: 0;
+    }
+    header p {
+      color: #aab4c2;
+      font-size: 13px;
+      margin: 8px 0;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 20px;
+      margin-top: 18px;
+    }
+    .stage {
+      height: min(72vh, 760px);
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #3f4552;
+      border-radius: 12px;
+      background: radial-gradient(
+        ellipse at 50% 25%,
+        #50515d,
+        #2c303e 55%,
+        #1e2531
+      );
+    }
+    .stage:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 -150px 100px -80px #0e1421;
+    }
+    .actor {
+      position: absolute;
+      bottom: 0;
+      width: 61%;
+      height: 100%;
+      transition:
+        filter 0.2s,
+        opacity 0.2s;
+      filter: brightness(0.76);
+      opacity: 0;
+    }
+    .actor.visible {
+      opacity: 1;
+    }
+    .actor.speaking {
+      filter: brightness(1);
+    }
+    .actor:nth-child(1) {
+      left: -7%;
+    }
+    .actor:nth-child(2) {
+      right: -7%;
+    }
+    .portrait {
+      height: 100%;
+      width: 100%;
+    }
+    .dialogue {
+      position: absolute;
+      bottom: 18px;
+      left: 20px;
+      right: 20px;
+      z-index: 2;
+      padding: 17px 22px;
+      background: #101621ed;
+      border: 1px solid #81775e;
+      border-radius: 10px;
+      min-height: 120px;
+    }
+    #speaker {
+      font-weight: 600;
+      color: #e4cd99;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    #text {
+      font: 18px/1.55 Georgia;
+      max-height: 170px;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+    .controls {
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+    button,
+    select {
+      background: #303b4c;
+      color: #f5f0e7;
+      border: 1px solid #56627a;
+      border-radius: 7px;
+      padding: 9px 13px;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: wait;
+    }
+    button:focus-visible,
+    select:focus-visible {
+      outline: 2px solid #e4cd99;
+      outline-offset: 3px;
+    }
+    audio {
+      width: 100%;
+      margin: 12px 0;
+    }
+    aside {
+      border: 1px solid #3f4552;
+      border-radius: 12px;
+      overflow: hidden;
+      max-height: calc(72vh + 120px);
+      display: flex;
+      flex-direction: column;
+    }
+    aside h2 {
+      font-size: 13px;
+      font-weight: 500;
+      margin: 16px;
+      color: #c8c7c4;
+    }
+    #lines {
+      position: relative;
+      overflow: auto;
+      overscroll-behavior: contain;
+    }
+    #lines button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      border-radius: 0;
+      padding: 12px 16px;
+      border-top: 1px solid #343c49;
+      background: transparent;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    #lines button[aria-current="true"] {
+      background: #343d4d;
+      border-left: 3px solid #e4cd99;
+    }
+    #lines strong {
+      display: block;
+      color: #e4cd99;
+      font-size: 12px;
+    }
+    #status {
+      font-size: 12px;
+      color: #b6c1d0;
+    }
+    footer {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #9eabba;
+    }
+    a {
+      color: #d6c399;
+    }
+    .loading {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-size: 12px;
+      color: #d2c49e;
+      z-index: 3;
+    }
+    @media (max-width: 760px) {
+      main {
+        padding: 14px;
+      }
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .stage {
+        height: 70vh;
+        min-height: 410px;
+      }
+      .actor {
+        width: 75%;
+        height: 90%;
+        bottom: 90px;
+      }
+      .actor:nth-child(1) {
+        left: -17%;
+      }
+      .actor:nth-child(2) {
+        right: -17%;
+      }
+      .dialogue {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        padding: 14px;
+      }
+      #text {
+        font-size: 16px;
+        max-height: 180px;
+      }
+      aside {
+        max-height: 260px;
+      }
+      header {
+        display: block;
+      }
+      h1 {
+        font-size: 21px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .actor {
+        transition: none;
+      }
+    }
+  </style>
+  <main>
+    <header>
+      <div>
+        <h1 id="title"></h1>
+        <p>Full-cast chapter · synchronized portraits and dialogue</p>
+      </div>
+      <span id="status" role="status">Preparing characters…</span>
+    </header>
+    <div class="layout">
+      <section>
+        <div class="stage" id="stage">
+          <span class="loading" id="loading">Preparing characters…</span>
+          <div id="actors"></div>
+          <div class="dialogue">
+            <div id="speaker"></div>
+            <div id="text"></div>
+          </div>
+        </div>
+        <audio
+          id="audio"
+          controls
+          preload="metadata"
+          aria-label="Chapter audio"
+        ></audio>
+        <div class="controls">
+          <button id="previous" aria-label="Previous line">Previous</button
+          ><button id="play" disabled>Play chapter</button
+          ><button id="next" aria-label="Next line">Next</button
+          ><button id="diary">The Diary</button
+          ><button id="restart">Restart</button
+          ><select id="speed" aria-label="Playback speed">
+            <option value="1">1× speed</option>
+            <option value="0.85">0.85× speed</option>
+            <option value="1.25">1.25× speed</option>
+          </select>
+        </div>
+      </section>
+      <aside>
+        <h2>Jump to a line</h2>
+        <div id="lines"></div>
+      </aside>
+    </div>
+    <footer>
+      <p id="credit"></p>
+      <a id="original" target="_blank" rel="noopener"
+        >Read and support the original</a
+      >
+    </footer>
+  </main>
+  <script>
+    /*__RUNTIME__*/
+  </script>
+  <script>
+    const data=/*__DATA__*/;
+    const $=id=>document.getElementById(id),audio=$('audio'),controllers={},cards={},mouthEnabled={};let activeIndex=-2,ready=false,frame=0,disposed=false;
+    document.title=data.title;$('title').textContent=data.title;$('credit').textContent=data.credit;$('original').href=data.creditLink;audio.src=data.audio;const recordingSrc='/chapter/audio.mp3';data.assets[recordingSrc]=data.audio;
+    const cueUrls={};
+    for(const [role,id] of Object.entries(data.roleIds)){
+     const character=data.characters.find(c=>c.id===id),pose=character.poses.find(p=>p.name===(data.roles[role].pose||'front'));
+     const card=document.createElement('div');card.className='actor';card.dataset.role=role;if(data.roles[role].flip)card.style.transform='scaleX(-1)';const host=document.createElement('div');host.className='portrait';card.append(host);$('actors').append(card);cards[role]=card;
+     controllers[role]=FrameAnimation.createPortraitController(host,{character,pose,settings:{blink:true,life:true,breathing:true,head:true,gaze:true,secondary:true,brow:0,mouth:false},resolveAsset:src=>data.assets[src]||src});
+     cueUrls[role]='/chapter-cues/'+role+'.json';data.assets[cueUrls[role]]='data:application/json;base64,'+btoa(JSON.stringify({metadata:{duration:data.duration},mouthCues:data.actorCues[role]}));
+    }
+    const buttons=data.lines.map((line,i)=>{const button=document.createElement('button'),name=document.createElement('strong'),text=document.createElement('span');name.textContent=data.roles[line.speaker]?.name||line.speaker;text.textContent=line.text;button.append(name,text);button.onclick=()=>seek(i);$('lines').append(button);return button});
+    function findLine(t){let low=0,high=data.lines.length-1,index=-1;while(low<=high){const middle=(low+high)>>1;if(data.lines[middle].start<=t){index=middle;low=middle+1}else high=middle-1}return index}
+    function update(force=false){if(disposed)return;const index=findLine(audio.currentTime),line=data.lines[index],inside=!!line&&audio.currentTime<line.end;
+     if(force||index!==activeIndex){activeIndex=index;$('speaker').textContent=line?(data.roles[line.speaker]?.name||line.speaker):'Opening music';$('text').textContent=line?.text||data.title;buttons.forEach((b,i)=>b.setAttribute('aria-current',String(i===index)));if(index>=0)$('lines').scrollTop=Math.max(0,buttons[index].offsetTop-30);}
+     for(const[role,controller]of Object.entries(controllers)){const speaking=inside&&line.speaker===role&&!audio.paused&&!audio.ended&&!audio.muted&&audio.volume>0;cards[role].classList.toggle('visible',role===Object.keys(data.roleIds)[0]||index>=data.firstAppearance[role]);cards[role].classList.toggle('speaking',speaking);if(mouthEnabled[role]!==speaking){mouthEnabled[role]=speaking;controller.update({mouth:speaking});}}
+     $('play').textContent=audio.paused?'Play chapter':'Pause';$('status').textContent=ready?`${Math.max(0,index+1)} / ${data.lines.length} lines`:'Preparing characters…';
+    }
+    function follow(){for(const [role,c]of Object.entries(controllers))c.follow(audio,recordingSrc,cueUrls[role]);update(true)}
+    async function play(){try{await audio.play()}catch(error){$('status').textContent=error.message}}
+    function seek(index){const target=Math.max(0,Math.min(data.lines.length-1,index));audio.currentTime=data.lines[target].start+.001;update(true);if(!audio.paused)follow()}
+    function tick(){update();frame=requestAnimationFrame(tick)}
+    audio.addEventListener('play',follow);audio.addEventListener('pause',()=>update(true));audio.addEventListener('seeked',()=>{update(true);if(!audio.paused)follow()});audio.addEventListener('ended',()=>{for(const c of Object.values(controllers))c.stop();update(true)});audio.addEventListener('error',()=>{$('status').textContent='The chapter audio could not be loaded.'});
+    $('play').onclick=()=>audio.paused?play():audio.pause();$('previous').onclick=()=>seek(activeIndex-1);$('next').onclick=()=>seek(activeIndex+1);$('diary').onclick=()=>seek(data.lines.findIndex(l=>l.speaker===Object.keys(data.roleIds)[1]));$('restart').onclick=()=>{audio.currentTime=0;update(true);if(!audio.paused)follow()};$('speed').onchange=e=>audio.playbackRate=Number(e.target.value);
+    window.chapter={data,audio,controllers,seek,get index(){return activeIndex},get ready(){return ready},update,play};
+    Promise.all(Object.values(controllers).map(c=>c.ready)).then(async results=>{for(let i=0;i<150&&!Object.values(controllers).every(c=>c.getStatus().blinkReady);i++)await new Promise(r=>setTimeout(r,20));ready=results.every(Boolean);$('loading').hidden=ready;$('play').disabled=!ready;$('loading').textContent=ready?'':'A character animation could not be prepared.';update(true)});tick();
+    window.addEventListener('pagehide',()=>{disposed=true;cancelAnimationFrame(frame);audio.pause();for(const c of Object.values(controllers))c.dispose()});
+  </script>
+</html>

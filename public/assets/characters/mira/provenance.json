@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "sourceSha256": "68094ff4dd9f01e7f6636804207a9288769f8f3c0f4d818ca78c1931c6177503",
+  "sourceAssets": {
+    "68094ff4dd9f01e7f6636804207a9288769f8f3c0f4d818ca78c1931c6177503": "68094ff4dd9f01e7f6636804207a9288769f8f3c0f4d818ca78c1931c6177503",
+    "e5eb47fb63f03437ac8ecf0698f1202bad76a6956bfb0c2e715a1113b87e7431": "e5eb47fb63f03437ac8ecf0698f1202bad76a6956bfb0c2e715a1113b87e7431",
+    "48658f755c850c4f38c9eab7cf545f44eae8150e7d9fe4395d1dd92566312752": "48658f755c850c4f38c9eab7cf545f44eae8150e7d9fe4395d1dd92566312752",
+    "ae3a69334392e2e11bfbdd75950589f5a8f1d8b71cece5a6c281dfb63e7a9e10": "ae3a69334392e2e11bfbdd75950589f5a8f1d8b71cece5a6c281dfb63e7a9e10",
+    "262e03025d2be31cd1861d0d62cb4c627e9f4e03e4f5541f1739e50fa6d2ffb4": "262e03025d2be31cd1861d0d62cb4c627e9f4e03e4f5541f1739e50fa6d2ffb4"
+  },
+  "files": {
+    "portrait.png": "68094ff4dd9f01e7f6636804207a9288769f8f3c0f4d818ca78c1931c6177503",
+    "repair.png": "226bf4b80619069ba7f8bff79d341dcf1053671ed4b995c7f2ca8244645df4a5",
+    "mouth.png": "cdef4a139f63e1b7fc709e1572c5fbaeff2dff51961fb3eb4a1697adda8f600d",
+    "blink.png": "bec092f5daacd28a764f6f025de43471d9a427837a811a5d9fd4f424517ed391",
+    "brows.png": "b692f1df1960d7a9c9288dbebd48e0bcbf7cdb2b3de8cd0ffd7d598cd4b052b9",
+    "gaze.png": "41af7c551ed91794cf78f24431e71be88459cd10fcf6983256a5d045464d43fd",
+    "review.png": "ee879c4130c9212ce8418842ed30da8ee1af53a0e8bd34f87ae4d180cc8028a0"
+  },
+  "recipeSha256": "e80fffae4a996de2ae457a5588c013d9c0abe805a5133c156937a1d9af3e5512",
+  "artwork": {
+    "name": "Mira original approved design",
+    "creator": "Mario Manzocco with OpenAI built-in image generation",
+    "license": "MIT; original example artwork, see art/characters/mira/provenance.json"
+  },
+  "pixelPolicy": "Immutable source; deterministic registration, local color matching, masking and atlas packing of supplied edits only."
+}

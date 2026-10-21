@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "id": "frame-mira",
+  "name": "Mira — original example",
+  "localOnly": false,
+  "characters": [
+    {
+      "id": "mira",
+      "name": "Mira",
+      "color": "#4b8178",
+      "description": "An original contemporary example character for Frame.",
+      "poses": [
+        {
+          "id": "mira_neutral",
+          "name": "Everyday",
+          "src": "/assets/characters/mira/portrait.png",
+          "rig": "/assets/characters/mira/rig.json",
+          "capabilities": {
+            "mouth": true,
+            "blink": true,
+            "body": true,
+            "gaze": true,
+            "brows": true
+          },
+          "animation": {
+            "poseKey": "mira_neutral",
+            "assetRoot": "/assets/characters/mira",
+            "manifestUrl": "/assets/characters/mira/manifest.json",
+            "speechIndexUrl": "/assets/characters/mira/speech.json",
+            "browsIndexUrl": "/assets/characters/mira/brows-index.json"
+          }
+        }
+      ]
+    }
+  ],
+  "authoring": {
+    "schemaVersion": 1,
+    "calibrationStatus": "reviewed",
+    "sourceSha256": "68094ff4dd9f01e7f6636804207a9288769f8f3c0f4d818ca78c1931c6177503",
+    "provenance": {
+      "name": "Mira original approved design",
+      "creator": "Mario Manzocco with OpenAI built-in image generation",
+      "license": "MIT; original example artwork, see art/characters/mira/provenance.json"
+    }
+  }
+}

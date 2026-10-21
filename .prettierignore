@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.studio/
+public/local-packs/
+test-results/
+playwright-report/
+src/animation/player-runtime.generated.ts
+src/animation/runtime/
+
+.release-private/
+src/player/*.generated.ts
+THIRD_PARTY_LICENSES.txt

@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible problem in Frame.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "For security vulnerabilities, follow SECURITY.md. Never attach keys, private character packs, or provider recordings without permission."
+  - type: input
+    id: version
+    attributes:
+      label: Release or commit
+      description: Include the commit SHA if running from source.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, Node.js version, browser/version, and optional tools involved.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Start from a bundled example when possible. Include the expected and observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Sanitized errors, screenshots, or a minimal synthetic project. Mention any tests already tried.

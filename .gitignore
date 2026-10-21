@@ -1,0 +1,23 @@
+node_modules/
+dist/
+public/local-packs/
+.env*
+.DS_Store
+playwright-report/
+test-results/
+artifacts/
+*.tsbuildinfo
+.studio/
+!.env.example
+
+# Release planning, draft artwork, and private provenance stay local.
+.release-private/
+__pycache__/
+*.py[cod]
+
+# Reproducible character-build recovery snapshots.
+public/assets/characters/.*.previous-*/
+public/assets/characters/.*.build-*/
+
+# Local workspace asset maps contain machine-specific paths.
+art/characters/*/work/
