@@ -63,6 +63,24 @@ test.afterEach(async ({ page }) => {
   expect(runtimeErrors.get(page), "No uncaught browser exceptions").toEqual([]);
 });
 
+/** Reveal without advancing if typing finished while the browser command was in flight. */
+async function revealLine(page: Page, nodeId: string) {
+  await page.waitForFunction((id) => {
+    const state = (window as unknown as { FramePlayer: { getState(): { nodeId: string; revealed: boolean } } }).FramePlayer.getState();
+    const button = document.querySelector<HTMLButtonElement>("#continue");
+    return state.nodeId === id && (state.revealed || (button && !button.hidden && !button.disabled));
+  }, nodeId);
+  await page.evaluate((id) => {
+    const state = (window as unknown as { FramePlayer: { getState(): { nodeId: string; revealed: boolean } } }).FramePlayer.getState();
+    if (state.nodeId !== id) throw new Error(`Expected ${id}, found ${state.nodeId}`);
+    if (!state.revealed) document.querySelector<HTMLButtonElement>("#continue")!.click();
+  }, nodeId);
+  await expect.poll(() => page.evaluate(() => {
+    const { nodeId, revealed } = (window as unknown as { FramePlayer: { getState(): { nodeId: string; revealed: boolean } } }).FramePlayer.getState();
+    return { nodeId, revealed };
+  })).toEqual({ nodeId, revealed: true });
+}
+
 async function openScenes(page: Page) {
   await page
     .getByRole("navigation", { name: "Main navigation" })
@@ -1002,7 +1020,7 @@ test("variables, conditional choices, branches, cast and music play in an offlin
   expect((await state()).musicId).toBe("theme");
   await expect(game.locator(".actor.flipped")).toHaveCount(1);
   await expect(game.locator(".actor.listening")).toHaveCount(1);
-  await game.locator("#continue").click();
+  await revealLine(game, "arrival");
   await game.locator("#continue").click();
   await expect(
     game.getByRole("button", { name: /Let’s see what’s out there/ }),
@@ -1012,7 +1030,7 @@ test("variables, conditional choices, branches, cast and music play in an offlin
   ).toHaveCount(0);
   await game.getByRole("button", { name: /Let’s see what’s out there/ }).click();
   expect((await state()).variables).toEqual({ trust: 2 });
-  await game.locator("#continue").click();
+  await revealLine(game, "outside");
   await game.locator("#continue").click();
   await expect.poll(async () => (await state()).nodeId).toBe("ending");
   await game.locator("#back").click();
@@ -1022,7 +1040,7 @@ test("variables, conditional choices, branches, cast and music play in an offlin
     game.getByRole("button", { name: /The trusted path/ }),
   ).toHaveCount(0);
   await game.getByRole("button", { name: /Stay a little/ }).click();
-  await game.locator("#continue").click();
+  await revealLine(game, "inside");
   await game.locator("#continue").click();
   await expect.poll(async () => (await state()).nodeId).toBe("quiet");
   expect((await state()).musicId).toBe(null);
@@ -1305,7 +1323,11 @@ test("exported HTML is self-contained and plays from a local file with no server
   await game
     .getByRole("button", { name: "Begin story →", exact: true })
     .click();
-  await game.locator("#continue").click();
+  // Deliberately let typing finish: revealing an already-complete line must not advance it.
+  await expect.poll(() => game.evaluate(() =>
+    (window as unknown as { FramePlayer: { getState(): { revealed: boolean } } }).FramePlayer.getState().revealed,
+  )).toBe(true);
+  await revealLine(game, "arrival");
   await expect(game.locator("#dialogue")).toHaveText(
     "Every story begins with a small possibility. A place, a person, a moment worth staying for.",
   );
@@ -1313,7 +1335,7 @@ test("exported HTML is self-contained and plays from a local file with no server
   await game
     .getByRole("button", { name: /Let’s see what’s out there/ })
     .click();
-  await game.locator("#continue").click();
+  await revealLine(game, "outside");
   await expect(game.locator("#dialogue")).toHaveText(
     "Look up. Even familiar places feel different when you give them a second glance.",
   );
@@ -1321,7 +1343,7 @@ test("exported HTML is self-contained and plays from a local file with no server
   await game
     .getByRole("button", { name: /Stay a little. Tell me a story./ })
     .click();
-  await game.locator("#continue").click();
+  await revealLine(game, "inside");
   await expect(game.locator("#dialogue")).toHaveText(
     "All right. But the best stories leave a little room for you to change them.",
   );
@@ -1498,6 +1520,17 @@ test("expressions change between speech: tags in voiced lines wait, and voices s
   await game.addInitScript(() => {
     const log: { event: string; at: number }[] = [];
     (window as unknown as { morphLog: typeof log }).morphLog = log;
+    const samples = { restWhileSpeaking: false, changedDuringVoice: false };
+    (window as unknown as { morphSamples: typeof samples }).morphSamples = samples;
+    const sample = () => {
+      const state = (window as unknown as { FramePlayer?: { getState(): { nodeId: string; revealed: boolean; speaking: boolean; expressions: Record<string, string | null> } } }).FramePlayer?.getState();
+      if (state?.nodeId === "arrival" && state.revealed && state.speaking) {
+        samples.restWhileSpeaking ||= state.expressions.mira === "neutral";
+        samples.changedDuringVoice ||= state.expressions.mira !== "neutral";
+      }
+      requestAnimationFrame(sample);
+    };
+    requestAnimationFrame(sample);
     const play = HTMLMediaElement.prototype.play;
     HTMLMediaElement.prototype.play = function () {
       log.push({ event: "voice", at: performance.now() });
@@ -1519,17 +1552,13 @@ test("expressions change between speech: tags in voiced lines wait, and voices s
     game.evaluate(() => (window as unknown as { FramePlayer: { getState(): State } }).FramePlayer.getState());
   await game.goto(pathToFileURL(file).href);
   await game.getByRole("button", { name: "Begin story →" }).click();
-  // The words reach the tag long before the 1.4 s recording ends: the face must not change yet.
-  await expect.poll(async () => {
-    const current = await state();
-    return current.revealed && current.speaking;
-  }).toBe(true);
-  expect((await state()).expressions.mira).toBe("neutral");
-  // Once the line has been spoken, the expression changes.
+  // Observe inside the page so a slow host cannot miss the short audio window
+  // between separate remote calls. A premature face change must never be sampled.
   await expect.poll(async () => (await state()).expressions.mira, { timeout: 8000 }).toBe("focused");
+  expect(await game.evaluate(() => (window as unknown as { morphSamples: { restWhileSpeaking: boolean; changedDuringVoice: boolean } }).morphSamples)).toEqual({ restWhileSpeaking: true, changedDuringVoice: false });
   await game.locator("#continue").click();
   await expect.poll(async () => (await state()).nodeId).toBe("invitation");
-  await expect.poll(async () => (await state()).speaking, { timeout: 8000 }).toBe(true);
+  await expect.poll(() => game.evaluate(() => (window as unknown as { morphLog: { event: string }[] }).morphLog.filter(entry => entry.event === "voice").length), { timeout: 8000 }).toBe(2);
   const log = await game.evaluate(() => (window as unknown as { morphLog: { event: string; at: number }[] }).morphLog);
   const morphEnds = log.filter((entry) => entry.event === "morph-end").map((entry) => entry.at);
   const voices = log.filter((entry) => entry.event === "voice").map((entry) => entry.at);
